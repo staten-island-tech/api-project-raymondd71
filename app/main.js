@@ -10,7 +10,20 @@ async function getData() {
     }
   } catch (error) {
     console.log(error);
-    alert("sorry could not find that weapeon");
+    alert("sorry could not find that weapon");
   }
 }
+
+function createcards(data) {
+  data.forEach((thing)=>
+    document.querySelector("container")
+  .insertAdjacentHTML(
+    "beforeend",
+    `<div class= item-center>
+      <h1>${thing["displayName"]}</h1>
+      </div>`);
+  
+  );
+}
+
 getData();
