@@ -14,16 +14,23 @@ async function getData() {
   }
 }
 
-function createcards(data) {
-  data.forEach((thing)=>
-    document.querySelector("container")
-  .insertAdjacentHTML(
-    "beforeend",
-    `<div class= item-center>
-      <h1>${thing["displayName"]}</h1>
-      </div>`);
-  
+function createCards(data) {
+  data.forEach((thing) =>
+    document.querySelector(".container").insertAdjacentHTML(
+      "beforeend",
+      `<div class= "card item-center">
+      <h1>:${thing["displayName"]}</h1>
+      </div>`
+    )
   );
 }
 
 getData();
+createCards();
+// async function getData(){
+//   data.forEach((x)=>{});
+//   createCards(data);
+// } catch (error){
+//   console.group(error);
+//   alert("sorry")
+// }
