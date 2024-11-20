@@ -15,15 +15,12 @@ async function getData() {
 }
 
 function createcards(data) {
-  data.forEach((thing)=>
-    document.querySelector("container")
-  .insertAdjacentHTML(
-    "beforeend",
-    `<div class= item-center>
-      <h1>${thing["displayName"]}</h1>
-      </div>`);
-  
+  data.forEach((thing) =>
+    document.querySelector("container").insertAdjacentHTML(
+      "beforeend",
+      `<div class= "item-center"><img src="${thing.displayIcon}" alt="">
+      </div>`
+    )
   );
 }
-
 getData();
