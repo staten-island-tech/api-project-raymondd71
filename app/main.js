@@ -14,17 +14,24 @@ async function getData() {
   }
 }
 
+<<<<<<< HEAD
 function createCards(data) {
   data.forEach((thing) =>
     document.querySelector(".container").insertAdjacentHTML(
       "beforeend",
       `<div class= "card item-center">
       <h1>:${thing["displayName"]}</h1>
+=======
+function createcards(data) {
+  data.forEach((thing) =>
+    document.querySelector("container").insertAdjacentHTML(
+      "beforeend",
+      `<div class= "item-center"><img src="${thing.displayIcon}" alt="">
+>>>>>>> a12ac8ef63b08d7bdeb4ce13b7f75c8c3105a05e
       </div>`
     )
   );
 }
-
 getData();
 createCards();
 // async function getData(){
