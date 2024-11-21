@@ -6,34 +6,28 @@ async function getData() {
       throw new Error(response);
     } else {
       const data = await response.json();
-      console.log(data);
+      const weapons = data.data;
+      createCards(weapons);
     }
   } catch (error) {
     console.log(error);
     alert("sorry could not find that weapon");
   }
 }
+getData();
 
-<<<<<<< HEAD
 function createCards(data) {
   data.forEach((thing) =>
-    document.querySelector(".container").insertAdjacentHTML(
+    document.querySelector(".box").insertAdjacentHTML(
       "beforeend",
-      `<div class= "card item-center">
-      <h1>:${thing["displayName"]}</h1>
-=======
-function createcards(data) {
-  data.forEach((thing) =>
-    document.querySelector("container").insertAdjacentHTML(
-      "beforeend",
-      `<div class= "item-center"><img src="${thing.displayIcon}" alt="">
->>>>>>> a12ac8ef63b08d7bdeb4ce13b7f75c8c3105a05e
-      </div>`
+      `<div class="card h-[50rem] w-[21%] min-w-[30rem] border-2 border-black rounded-[25px] flex flex-col items-center justify-around mb-[5%] bg-[rgba(211,211,211,0.5)] shadow-[5px_5px_5px_gray]">
+      <h1>${thing.displayName}</h1>
+       <img src="displayIcon" alt=""></div>`
     )
   );
 }
-getData();
-createCards();
+console.log(getData());
+
 // async function getData(){
 //   data.forEach((x)=>{});
 //   createCards(data);
