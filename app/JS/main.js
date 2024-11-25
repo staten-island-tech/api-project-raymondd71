@@ -1,4 +1,4 @@
-import "./style.css";
+import "../style.css";
 async function getData() {
   try {
     const response = await fetch("https://valorant-api.com/v1/weapons");
@@ -20,13 +20,12 @@ function createCards(data) {
   data.forEach((thing) =>
     document.querySelector(".box").insertAdjacentHTML(
       "beforeend",
-      `<div class="card h-[50rem] w-[21%] min-w-[30rem] border-2 border-black rounded-[25px] flex flex-col items-center justify-around mb-[5%] bg-[rgba(211,211,211,0.5)] shadow-[5px_5px_5px_gray]">
-      <h1>${thing.displayName}</h1>
-       <img src="displayIcon" alt=""></div>`
+      `<div class="card w-[21%] h-[16rem] border-[5px] border-black flex flex-col items-center justify-around mb-[5%] text-center ">
+      <h1>${thing.displayName} </h1>
+       <img class= "w-auto h-50%" src="${thing.displayIcon}" alt="${thing.displayIcon}" ></div>`
     )
   );
 }
-console.log(getData());
 
 // async function getData(){
 //   data.forEach((x)=>{});
