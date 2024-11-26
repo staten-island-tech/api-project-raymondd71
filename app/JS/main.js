@@ -22,7 +22,7 @@ function createCards(data) {
       "beforeend",
       `<div class="card w-[21%] h-[16rem] border-[5px] border-black flex flex-col items-center justify-around mb-[5%] text-center ">
       <h1>${thing.displayName} </h1>
-       <img class= "w-auto h-50%" src="${thing.displayIcon}" alt="${thing.displayIcon}" ></div>`
+       <img class= "w-auto h-[200px] object-contain" src="${thing.displayIcon}" alt="${thing.displayIcon}" > </div>`
     )
   );
 }
