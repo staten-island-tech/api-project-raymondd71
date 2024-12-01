@@ -1,11 +1,13 @@
 import "../style.css";
+let data = [];
 async function getData() {
   try {
     const response = await fetch("https://valorant-api.com/v1/weapons");
+    console.log(response.json());
     if (response.status != 200) {
       throw new Error(response);
     } else {
-      const data = await response.json();
+      data = await response.json();
       const weapons = data.data;
       createCards(weapons);
     }
@@ -26,12 +28,29 @@ function createCards(data) {
     )
   );
 }
-document.querySelector("#rifle").addEventListener("click", async () => {
-  const rifleWeapons = data.filter(
-    (data) => weapon.shopData && weapon.shopData.category === "Rifle"
-  );
+
+document.addEventListener("click", () => {
+  document.getElementById("rifleButton").addEventListener("click", () => {
+    const weaponRifle = data.data.filter(
+      (thing) => thing.shopData && thing.shopData.category === "Rifles"
+    );
+    document.querySelector(".box").innerHTML = "";
+    createCards(weaponRifle);
+    console.log(weaponRifle);
+  });
 });
-// async function getData(){
+
+// document.querySelector("#rifleButton").addEventListener("click", () => {
+//   const weaponRifle = data.data.filter(
+//     (thing) =>
+//     thing.shopData.category === "Rifle") {
+//       weaponRifle.push(thing);
+//     }
+//   );
+//   document.querySelector(".box").innerHTML = "";
+//   displayAgents(weaponRifle);
+// });
+// // async function getData(){
 //   data.forEach((x)=>{});
 //   createCards(data);
 // } catch (error){
@@ -39,3 +58,59 @@ document.querySelector("#rifle").addEventListener("click", async () => {
 //   alert("sorry")
 // }
 //<h2> Fire Rate: ${thing.weaponStats.fireRate}</h2>
+
+// import "../style.css";
+
+// let data = [];
+
+// async function getData() {
+//   try {
+//     const response = await fetch("https://valorant-api.com/v1/weapons");
+//     if (response.status !== 200) {
+//       throw new Error(response.statusText);
+//     } else {
+//       data = await response.json();
+//       console.log(data); // Print data to the console
+//       const weapons = data.data;
+//       createCards(weapons);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//     alert("something went wrong :(");
+//   }
+// }
+
+// getData();
+
+// function createCards(weapons) {
+//   weapons.forEach((weapon) =>
+//     document.querySelector(".box").insertAdjacentHTML(
+//       "beforeend",
+//       `<div class="card w-[21%] h-[16rem] border-[5px] border-black flex flex-col items-center justify-around mb-[5%] text-center">
+//       <h1>${weapon.displayName}</h1>
+//        <img class="w-auto h-[200px] object-contain" src="${weapon.displayIcon}" alt="${weapon.displayIcon}"></div>`
+//     )
+//   );
+// }
+
+// document.addEventListener("click", () => {
+//   document.getElementById("rifleButton").addEventListener("click", () => {
+//     const weaponRifle = data.data.filter(
+//       (weapon) => weapon.shopData && weapon.shopData.category === "Rifles"
+//     );
+//     document.querySelector(".box").innerHTML = "";
+//     createCards(weaponRifle);
+//     console.log(weaponRifle); // Print filtered rifles to the console
+//   });
+// });
+// document.addEventListener("click", () => {
+//   document.getElementById("heavyButton").addEventListener("click", () => {
+//     const weaponHeavy = data.data.filter(
+//       (weapon) =>
+//         weapon.shopData && weapon.shopData.category === "Heavy Weapons"
+//     );
+//     document.querySelector(".box").innerHTML = "";
+//     createCards(weaponHeavy);
+//     console.log(weaponHeavy); // Print filtered rifles to the console
+//   });
+// });
