@@ -24,7 +24,7 @@ function createCards(data) {
   data.forEach((thing) =>
     document.querySelector(".box").insertAdjacentHTML(
       "beforeend",
-      `<div class="card w-[21%] h-[16rem] border-[5px] border-black flex flex-col items-center justify-around mb-[5%] text-center [@media(max-width:730px)]:w-[33%] [@media(max-width:580px)]:w-[50%]">
+      `<div class="card w-[21%] h-[16rem] border-[5px] border-black flex flex-col items-center justify-around mb-[5%] text-center [@media(max-width:800px)]:w-[33%] [@media(max-width:550px)]:w-[50%]">
       <h1>${thing.displayName} </h1>
        <img class= "w-auto h-[200px] object-contain" src="${thing.displayIcon}" alt="${thing.displayIcon}" ></div>`
     )
