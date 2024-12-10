@@ -21,6 +21,7 @@ async function getData() {
 getData();
 
 function createCards(data) {
+  document.querySelector(".box").innerHTML = "";
   data.forEach((thing) =>
     document.querySelector(".box").insertAdjacentHTML(
       "beforeend",
@@ -36,40 +37,111 @@ document.getElementById("showall").addEventListener("click", () => {
   createCards(data.data);
   console.log(data.data);
 });
-// Figure out why this doesnt display all weapons
-document.getElementById("rifleButton").addEventListener("click", () => {
-  const weaponRifle = data.data.filter(
-    (thing) => thing.shopData && thing.shopData.category === "Rifles"
-  );
-  document.querySelector(".box").innerHTML = "";
-  createCards(weaponRifle);
-  console.log(weaponRifle);
-});
-document.getElementById("heavyButton").addEventListener("click", () => {
-  const weaponHeavy = data.data.filter(
-    (thing) => thing.shopData && thing.shopData.category == "Heavy Weapons"
-  );
-  document.querySelector(".box").innerHTML = "";
-  createCards(weaponHeavy);
-  console.log(weaponHeavy);
-});
 
-document.getElementById("smgButton").addEventListener("click", () => {
-  const weaponSMG = data.data.filter(
-    (thing) => thing.shopData && thing.shopData.category == "SMGs"
-  );
-  document.querySelector(".box").innerHTML = "";
-  createCards(weaponSMG);
-  console.log(weaponSMG);
-});
-document.getElementById("secondary").addEventListener("click", () => {
-  const secondary = data.data.filter(
-    (thing) => thing.shopData && thing.shopData.category == "Pistols"
-  );
-  document.querySelector(".box").innerHTML = "";
-  createCards(secondary);
-  console.log(secondary);
-});
+async function secondarySort() {
+  document
+    .getElementById("secondary")
+    .addEventListener("click", async function (event) {
+      event.preventDefault();
+
+      try {
+        const response = await fetch("https://valorant-api.com/v1/weapons");
+        if (response.status != 200) {
+          throw new Error(response);
+        } else {
+          const data = await response.json();
+          const weapons = data.data.filter(
+            (thing) => thing.shopData && thing.shopData.category === "Pistols"
+          );
+
+          createCards(weapons);
+        }
+      } catch (error) {
+        console.log(error);
+        alert("sorry");
+      }
+    });
+}
+secondarySort();
+
+async function riflesSort() {
+  document
+    .getElementById("rifleButton")
+    .addEventListener("click", async function (event) {
+      event.preventDefault();
+
+      try {
+        const response = await fetch("https://valorant-api.com/v1/weapons");
+        if (response.status != 200) {
+          throw new Error(response);
+        } else {
+          const data = await response.json();
+          const weapons = data.data.filter(
+            (thing) => thing.shopData && thing.shopData.category === "Rifles"
+          );
+
+          createCards(weapons);
+        }
+      } catch (error) {
+        console.log(error);
+        alert("Sorry,unable to find the weapon");
+      }
+    });
+}
+riflesSort();
+
+async function heavySort() {
+  document
+    .getElementById("heavyButton")
+    .addEventListener("click", async function (event) {
+      event.preventDefault();
+
+      try {
+        const response = await fetch("https://valorant-api.com/v1/weapons");
+        if (response.status != 200) {
+          throw new Error(response);
+        } else {
+          const data = await response.json();
+          const weapons = data.data.filter(
+            (thing) =>
+              thing.shopData && thing.shopData.category === "Heavy Weapons"
+          );
+
+          createCards(weapons);
+        }
+      } catch (error) {
+        console.log(error);
+        alert("Sorry,unable to find the weapon");
+      }
+    });
+}
+heavySort();
+
+async function smgSort() {
+  document
+    .getElementById("smgButton")
+    .addEventListener("click", async function (event) {
+      event.preventDefault();
+
+      try {
+        const response = await fetch("https://valorant-api.com/v1/weapons");
+        if (response.status != 200) {
+          throw new Error(response);
+        } else {
+          const data = await response.json();
+          const weapons = data.data.filter(
+            (thing) => thing.shopData && thing.shopData.category === "SMGs"
+          );
+
+          createCards(weapons);
+        }
+      } catch (error) {
+        console.log(error);
+        alert("Sorry,unable to find the weapon");
+      }
+    });
+}
+smgSort();
 // document.addEventListener("click", () => {
 //   document.getElementById("rifleButton").addEventListener("click", () => {
 //     const weaponRifle = data.data.filter(
