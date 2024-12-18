@@ -142,6 +142,7 @@ async function smgSort() {
     });
 }
 smgSort();
+
 // document.addEventListener("click", () => {
 //   document.getElementById("rifleButton").addEventListener("click", () => {
 //     const weaponRifle = data.data.filter(
