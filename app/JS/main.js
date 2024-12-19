@@ -166,7 +166,6 @@ document.getElementById("showBundles").addEventListener("click", () => {
   createCards(datas.data);
   console.log(datas.data);
 });
-
 // document.addEventListener("click", () => {
 //   document.getElementById("rifleButton").addEventListener("click", () => {
 //     const weaponRifle = data.data.filter(
