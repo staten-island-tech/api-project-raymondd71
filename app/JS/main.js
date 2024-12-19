@@ -1,6 +1,7 @@
 import "../style.css";
 
 let data = [];
+let datas = [];
 
 async function getData() {
   try {
@@ -142,6 +143,31 @@ async function smgSort() {
     });
 }
 smgSort();
+
+async function getStuffs() {
+  try {
+    const response = await fetch("https://valorant-api.com/v1/bundles");
+    if (response.status != 200) {
+      throw new Error(response);
+    } else {
+      datas = await response.json();
+      console.log(datas);
+      const bundles = datas.data;
+      showBundle(bundles);
+    }
+  } catch (error) {
+    console.log(error);
+    alert("something went wrong :(");
+  }
+}
+getStuffs();
+
+document.getElementById("showBundles").addEventListener("click", () => {
+  document.querySelector(".box").innerHTML = "";
+  createCards(datas.data);
+  console.log(datas.data);
+});
+
 // document.addEventListener("click", () => {
 //   document.getElementById("rifleButton").addEventListener("click", () => {
 //     const weaponRifle = data.data.filter(
