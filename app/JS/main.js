@@ -163,8 +163,8 @@ getStuffs();
 
 document.getElementById("showBundles").addEventListener("click", () => {
   document.querySelector(".box").innerHTML = "";
-  createCards(bundles.data);
-  console.log(bundles.data);
+  createCards(datas.data);
+  console.log(datas.data);
 });
 // document.addEventListener("click", () => {
 //   document.getElementById("rifleButton").addEventListener("click", () => {
