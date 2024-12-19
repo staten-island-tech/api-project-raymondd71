@@ -153,7 +153,6 @@ async function getStuffs() {
       datas = await response.json();
       console.log(datas);
       const bundles = datas.data;
-      showBundle(bundles);
     }
   } catch (error) {
     console.log(error);
